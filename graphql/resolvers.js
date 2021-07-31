@@ -1,12 +1,13 @@
-const Dongho = {
-    name: "SEO DONG HO",
-    age : 35,
-    gender : "Male"
-}
+import {movies, getById, addMovie, deleteMovie} from "./db"
 
 const resolvers = {
-    Query : {
-        person : () => Dongho
+    Query:{
+        movies: () => movies,
+        movie: (_, {id}) => getById(id)
+    },
+    Mutation:{
+        addMovie: (_, {name, score}) => addMovie(name, score),
+        deleteMovie: (_, {id}) => deleteMovie(id)
     }
 };
 
